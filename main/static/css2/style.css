@@ -1,0 +1,26 @@
+.container1{
+    border-color: black;
+    border-style: solid;
+    border-radius: 25px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.container1 img{
+    width: 50%;
+    float: left;
+    margin-right: 5%;
+}
+
+.container1 .bpm{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 40%;
+    font-size: 2vw;
+    float: left;
+    text-align: center;
+}

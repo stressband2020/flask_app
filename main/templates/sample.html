@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="static\Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static\Chart.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Stress Band</title>
+</head>
+<body>
+    <h1>Stress Band</h1>
+    <div class="container">
+        <h3 align="center">Stress Level</h3>
+        <div class="progress" style="width:25%">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{ stress_val }}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{ stress_val }}%">
+            {{ stress_val }}% Complete (danger)
+        </div>
+        <h3 align="center">Stress Level</h3>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Stress Band</title>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>                                    
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/Features-Boxed-1.css?h=9511cb4019afcaed93985cda2aec5cb5">
+    <link rel="stylesheet" href="static/css/Features-Boxed.css?h=464d5a54af82f8bb9b17b2460c4833ae">
+    <link rel="stylesheet" href="static/css/Features-Clean.css?h=b4035f0c26446edaa24f97515c00550e">
+    <link rel="stylesheet" href="static/css/Login-Form-Clean.css?h=587ac2057624923cd5be3eaf8b1158cd">
+    <link rel="stylesheet" href="static/css/Registration-Form-with-Photo.css?h=e6a506898808e63c12c22c44e957c330">
+    <link rel="stylesheet" href="static/css/styles.css?h=d41d8cd98f00b204e9800998ecf8427e">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="static/js/firebase.js"></script>
+    <script src="static/js/test.js"></script>
+
+</head>
+
+<body>
+    <!-- Start: Features Boxed -->
+    <div class="features-boxed">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">Features</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+                
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" onclick="window.location.replace('/detailed')"">Detailed</button>
+              </div>
+            <!-- <div style="margin-right: auto; margin-left: auto;"><button class="btn-primary">Detailed</button></div> -->
+            <!-- End: Intro -->
+            <!-- Start: Features -->
+            <div class="row justify-content-center features">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><i class="fa fa-map-marker icon"></i>
+                        <h3 class="name" id="overall"></h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><img src="static/img/heart.png?h=d99eb29f853cf2c817216cfb85ea97de" width="40%">
+                        <h3 class="name" id="bpm"">{{ bpm }}</h3>
+                        <h3 class="name">BPM</h3>
+            
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><img src="static/img/temp.png?h=16824fa04e4358729bb42755877880fc" width="25%">
+                        <h3 class="name" id="temp">{{ temp }}</h3>
+                        <h3 class="name">°C</h3>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div class="box"><img src="static/img/Capture.PNG?h=64e083d03917fb8b5b50f715f11e40bb" width="40%">
+                        <h3 class="name" id="gsr">{{ gsr }}</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Features -->
+        </div>
+    </div>
+    <!-- End: Features Boxed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "stressband-bed7e",
+  "private_key_id": "243cfb9e70f24f2d57cfdee220b931ba9add34eb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCmYjNv351ETub0\n0wJQk+Kq31qnYhHp6aTYjOjmjgSnvw0la09jbthM+gJfus9d2e7UrkV1mR9dm9Z6\n3rqiOv7DbMt9OSkaTzNOUV3aOcECu8wnqus1CZ3tvgFqZu9xhnWxCVIdSe998yM1\nsQeNaltqvfwTJcGTEYR1aS0CAd0jXE0jZeP2+ET9Hz40taoL3PtXmSCxv8B6qqt9\niWtQH+oCKhGVmh+2M1689lEfnimZW0idFhcG7cPfNvnxfPYwqrEAj547C2hEUjUf\nKLnyGh1IngXs+zu4X+372CU3HrGcZKdKEwuUdHPkd12T7oUrB4c+FpJlUeHLmLma\nxCUQQPvVAgMBAAECggEAHOSlO4p4uD2+cCn7dywzOsqWJsaKR1VOTdescysa5llw\nSjz4GJONZtKsmlypuYnIpnDL+Ze5YWtYQ9aNUPJPPvcT4D9OorW5umI5WtXYLWYY\n1hOhjECLBxfNjaFp98wqgG+WraTi/Lt99As1vUpIrUDoNxgBpU0vtCbrTLOvp/3N\n7EdArjsaZw8nOKwYRvclsHl03VYSo+V/Kt5HNnsESOorLxbrwq0h0962PKIcznfc\n1y3DauFZd6zF8HamjzFwAqPqY+K7Okyg+uEw8+E0dkOgne5BYuSuCiIuiTEIsZkU\na/u5CReVC0OYnxkXgH8zxCcT1TvmSMzl8dx4REI1KQKBgQDRlly7eXS8tuEsfsJ4\nGoTu4LRj5WuN/JTRFELBeu8ISf3tPLiRHfS9olW4J9zViVxkm5CeTKNT7BGDVes3\n32UJ3A2Hh1l9/ZmMDruI32FEP2G8QbemNLxk8zKfAhCmcBiKvnwEucUDIsils7ZR\nKLDPsuQe8jeZjK+tEkQG2ZxTjQKBgQDLOpdClXaySLzw497IZiKX8p/xXa/0+MbH\nfbgCbPnjjHHk38xpCG++wcCNvEdLIWhuh4n9oYkdb2dyf0fqzZjgZ8AZQm2/8Q5B\naTq/LCutoPTTnOeFC5BN6BNjKgxMHFCQnRCLlFC/lcbEXfIWM9I7XkHga8f+H4QE\nRxQGdzxTaQKBgQChgjSNx+e8sVVOW5Ryx0TfbEu2m4nJjfYENI/I13oyMgq68crt\nEV+TbvCNjDJyX3rSkMreIgLO3iEUy3YKxVzwPyIx6Yx+OZpEwumjbThgRlODpkTm\nkMcJKBw/SnEYQVO4P1gEsD9wzjI+9wEtA6VVOO7wJgnQiwip32SKvtDn1QKBgQCd\nEh+uGo6upIFDPRsGj8nU3nS3u80u7MfVj1kUpt1L/VRZrI7z7s1PBbio0wfXDW8F\nXkRMfvjWgy/U0oLm+xhY+FcELs9cNhbqf0YkUyM/AtO2aeKWdaWGUQQK9Iikmo25\n92q+Nldie4QwaNueRVcLA4KuzR65Tepe1ACqLqW1YQKBgEmNule6hldY2xKoTOOA\nhs2iI3NOyp06O1jpRCAptvhMloGGPim8JZaLMel8V+mrohGQed0MN3AN+AY+DDx7\nbVBvUOGW0QSpXo7YtLgqbWAbLi74jOYcGo2k9WOhdGMPUMEpEQY+N3CF7Zkra/4y\nxFi1a2b0zwK2LMw0P1sdZRrq\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-rhufa@stressband-bed7e.iam.gserviceaccount.com",
+  "client_id": "100591240514814919400",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-rhufa%40stressband-bed7e.iam.gserviceaccount.com"
+}
