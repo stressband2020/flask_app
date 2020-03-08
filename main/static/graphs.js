@@ -40,21 +40,33 @@ function AJAX_POST(start,end){
         data: JSON.stringify({
             "tnow":String(start),
             "tafter":String(end),
+            "mode": mode,
         }),
         contentType: "application/json; charset=utf-8",
         success: function (data) {
             console.log(data);
             // one_one(data);
-            elements.forEach(element => {
-                $("#"+element).empty();
-            });
 
-            if (type=="Multiple"){
-                one_one(data);
+            if (mode == "graphs"){
+              elements.forEach(element => {
+                  $("#"+element).empty();
+              });
+
+              if (type=="Multiple"){
+                  one_one(data);
+              }
+              else{
+                  one(data);
+              }
             }
             else{
-                one(data);
+              $("#tables").empty();
+              // $('.dataframe').DataTable();
+
+              $("#tables").append(data);
+              $('.dataframe').DataTable();
             }
+
             
             // one_one(data);
 

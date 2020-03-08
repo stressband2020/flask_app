@@ -45,15 +45,16 @@ db_dc()
 def home():
     return render_template('home.html', stress_val=90)
 
-@app.route('/detailed', methods=['GET', 'POST'])
-def detailed():
+@app.route('/detailed_<mode>', methods=['GET', 'POST'])
+def detailed(mode):
 
     tnow = get_time()
     tafter = tnow + timedelta(days=1)
 
-
-    return render_template('graph.html', tnow = str(tnow.strftime("%Y-%m-%d")), tafter=str(tafter.strftime("%Y-%m-%d")))
-
+    if mode == "graphs":
+        return render_template('graph.html', mode=mode , tnow = str(tnow.strftime("%Y-%m-%d")), tafter=str(tafter.strftime("%Y-%m-%d")))
+    elif mode == "tables": 
+        return render_template('tables.html', mode=mode, tnow = str(tnow.strftime("%Y-%m-%d")), tafter=str(tafter.strftime("%Y-%m-%d")))
 
 test_model = api.model("Test", {"bpm":fields.Integer("Bpm"), "gsr":fields.Integer("GSR"), "temp": fields.Integer("temperature")})
 
@@ -130,36 +131,16 @@ class graph_route(Resource):
         df = pd.DataFrame(cursor.fetchall(),columns = ["id","date","bpm","temperature","gsr","overall"])
         df = df.set_index("id")
         print(df)
-        return {
-            "date":df["date"].to_list(),
-            "bpm":df["bpm"].to_list(),
-            "temperature": df["temperature"].to_list(),
-            "gsr":df["gsr"].to_list(),
-            "overall":df["overall"].to_list()
-            }
-        # graph_bpm = go.Figure()
-        # graph_temp = go.Figure()
-        # graph_gsr = go.Figure()
-        # graph_overall = go.Figure()
 
-        # graph_dict = {"bpm":graph_bpm, "temperature":graph_temp, "gsr":graph_gsr, "overall":graph_overall}
-        # graphs= {}
-        # for graph in graph_dict:
-
-        #     graph_dict[graph].add_trace(go.Scatter(x=df["date"], y=df[graph],
-        #                     mode='lines',
-        #                     name=graph.capitalize()))
-        #     graph_dict[graph].update_layout(
-        #         autosize=True,
-        #         title = {
-        #             "text" : graph.capitalize(),
-        #             "x" : .5
-        #             }
-
-        #     )
-        #     gr = json.dumps(graph_dict[graph], cls=plotly.utils.PlotlyJSONEncoder)
-        #     graphs[graph] = json.loads(gr)
-
-        # print(graphs["gsr"])
-        db_dc
-        return graphs
+        if api.payload["mode"] == "graphs":
+            return {
+                "date":df["date"].to_list(),
+                "bpm":df["bpm"].to_list(),
+                "temperature": df["temperature"].to_list(),
+                "gsr":df["gsr"].to_list(),
+                "overall":df["overall"].to_list()
+                }
+        else:
+            # df.reset_index(drop=True)
+            # df = df.set_index("date")
+            return df.to_html(classes="tables display")
