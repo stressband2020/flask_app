@@ -1,15 +1,20 @@
-var elements = ["bpm","temperature","gsr","overall"];
-var titles = {"bpm" : "BPM", "temperature": "Temperature", "gsr":"GSR", "overall":"Overall"}
+var elements = ["bpm","temperature","gsr"];
+var titles = {"bpm" : "BPM", "temperature": "Temperature", "gsr":"GSR"}
 var type = "";
 $(function(){
 
-    AJAX_POST(tnow,tafter);
+    AJAX_POST(tnow,tafter,"All");
     // $("type").change(function (e) {
 
     // });
+
+    $("#home").click(function(){
+      window.location
+    })
     $("#submit").click(function(){ 
         var start = $("#start").val();
         var end = $("#end").val();
+        var overall = $("#overall_select").val();
         if (start=="" | end == ""){
             alert("Set START and END date");
         }
@@ -21,7 +26,7 @@ $(function(){
                 alert("END date should be GREATER than START");
             }
             else{
-                AJAX_POST(start,end)
+                AJAX_POST(start,end,overall)
                 type = $("#type").val();
             }
             console.log(d1,d2,type);
@@ -33,13 +38,14 @@ $(function(){
 
 })
 
-function AJAX_POST(start,end){
+function AJAX_POST(start,end,overall){
     $.ajax({
         type: "POST",
         url: "/api/graph",
         data: JSON.stringify({
             "tnow":String(start),
             "tafter":String(end),
+            "overall":overall,
             "mode": mode,
         }),
         contentType: "application/json; charset=utf-8",
@@ -50,9 +56,11 @@ function AJAX_POST(start,end){
             if (mode == "graphs"){
               elements.forEach(element => {
                   $("#"+element).empty();
+
               });
 
               if (type=="Multiple"){
+                
                   one_one(data);
               }
               else{
@@ -64,7 +72,12 @@ function AJAX_POST(start,end){
               // $('.dataframe').DataTable();
 
               $("#tables").append(data);
-              $('.dataframe').DataTable();
+              $('.dataframe').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                  "excelHtml5",'csvHtml5','pdfHtml5'
+                ]
+              });
             }
 
             

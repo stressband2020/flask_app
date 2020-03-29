@@ -11,5 +11,9 @@ config = {
 firebase = pyrebase.initialize_app(config)
 
 fdb = firebase.database()
+# fdb.child("BPM").set("asd")
+# asd = fdb.child("BPM").get()
+
+# print(asd.val())
 
 

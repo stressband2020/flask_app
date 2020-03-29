@@ -24,7 +24,9 @@ $(function(){
         $("#bpm").text(snapshot.val().BPM);
         $("#gsr").text(snapshot.val().GSR);
         $("#temp").text(snapshot.val().Temperature);
-        $("#overall").text(snapshot.val().overall);
+        // $("#overall").text(snapshot.val().overall);
+        var oall = {"Low":"gauge_low.png", "Mild":"gauge_mild.png", "Severe":"gauge_severe.png"}
+        $("#overall_img").attr("src", "static/img/"+oall[snapshot.val().overall]);
     });
     
 });

@@ -88,20 +88,51 @@ class test(Resource):
 
                 tnow = get_time()
                 tnow = tnow.strftime("%Y-%m-%d %H:%M:%S")
-                overall = data["bpm"] + data["gsr"] + data["temperature"]
+       
+                # get data
+                bpm = data["bpm"]
+                gsr = data["gsr"]
+                temperature = data["temperature"]
+
+                # filter temperature
+                if temperature >= 40:
+                    temperature = fdb.child("Temperature").get().val()
+                
+                # filter gsr
+                if gsr <=99:
+                    gsr = 100
+                
+                # compute gsr
+                gsr = ((10*10**-3)/(gsr*5))*1e6
+
+                # compute overall
+                if bpm <= 90 and gsr > 5.71 and temperature >35:
+                    overall = "Low"
+                elif (bpm >= 91 and bpm <= 100) and (gsr >= 5 and gsr <= 5.71)  and (temperature >= 33 and temperature <35):
+                    overall = "Mild"
+                elif (bpm >= 100) and (gsr < 5) and (temperature < 33):
+                    overall = "Severe"
+                else:
+                    overall = "Invalid"
+                    return "SUCCESS"
+
+
+                print(f"bpm:{bpm},gsr:{gsr},temperature:{temperature},overall:{overall}")
+                
+
                 # print(type(data["bpm"]),data["bpm"])    
                 # bpm,temp,gsr,overall
                 insert = f"""INSERT INTO data(date,bpm,temp,gsr,overall)
-                VALUES('{tnow}',{data["bpm"]},{data["temperature"]},{data["gsr"]},{overall})"""
+                VALUES('{tnow}','{bpm}','{temperature}','{gsr}','{overall}')"""
                 cursor.execute(insert)
                 db_dc()
 
-                fdb.child("BPM").set(data["bpm"])
-                fdb.child("Temperature").set(data["temperature"])
-                fdb.child("GSR").set(data["gsr"])
+                fdb.child("BPM").set(bpm)
+                fdb.child("Temperature").set(temperature)
+                fdb.child("GSR").set(gsr)
                 fdb.child("overall").set(overall)
-            except:
-                pass
+            except Exception as error:
+                print(error)
         return "SUCCESS"
     
     def get(self):
@@ -123,13 +154,19 @@ class graph_route(Resource):
         print(api.payload)
         tnow = api.payload["tnow"]
         tafter = api.payload["tafter"]
-        select = f"""SELECT * FROM data WHERE date BETWEEN '{tnow}' AND '{tafter}'"""
+        overall = api.payload["overall"]
+
+        if overall == "All":
+            select = f"""SELECT * FROM data WHERE date BETWEEN '{tnow}' AND '{tafter}'"""
+        else:
+            select = f"""SELECT * FROM data WHERE overall = '{overall}' AND date BETWEEN '{tnow}' AND '{tafter}'"""
         cursor.execute(select)
         # for i in cursor.fetchall():
         #     print(i)
 
         df = pd.DataFrame(cursor.fetchall(),columns = ["id","date","bpm","temperature","gsr","overall"])
         df = df.set_index("id")
+        
         print(df)
 
         if api.payload["mode"] == "graphs":
@@ -138,9 +175,9 @@ class graph_route(Resource):
                 "bpm":df["bpm"].to_list(),
                 "temperature": df["temperature"].to_list(),
                 "gsr":df["gsr"].to_list(),
-                "overall":df["overall"].to_list()
+             
                 }
         else:
             # df.reset_index(drop=True)
             # df = df.set_index("date")
-            return df.to_html(classes="tables display")
+            return df.to_html(classes="table table-hover",index_names =False)
