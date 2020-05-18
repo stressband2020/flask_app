@@ -114,10 +114,10 @@ class test(Resource):
                     overall = "Severe"
                 else:
                     overall = "Invalid"
-                    return "SUCCESS"
+                   
 
-
-                print(f"bpm:{bpm},gsr:{gsr},temperature:{temperature},overall:{overall}")
+                data2 = dict(bpm=bpm, gsr=gsr, temperature=temperature, overall=overall)
+                print(data2)
                 
 
                 # print(type(data["bpm"]),data["bpm"])    
@@ -131,6 +131,7 @@ class test(Resource):
                 fdb.child("Temperature").set(temperature)
                 fdb.child("GSR").set(gsr)
                 fdb.child("overall").set(overall)
+                return data2
             except Exception as error:
                 print(error)
         return "SUCCESS"

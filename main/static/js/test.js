@@ -15,18 +15,9 @@ $(document).ready(function(){
                 $("#bpm").html(data["bpm"]);
                 $("#temp").html(data["temp"]);
                 $("#gsr").html(data["gsr"]);
-                $("#temp").html(data["temp"]);
                 $("#overall").html(data["overall"]);
             }
         });
     }
-    $.ajax({
-        type: "POST",
-        url: "/api/test",
-        data: "{asdadjkawdj:asd}",
-        success: function(data){
-            console.log("Asdadwa");
-        }
-    })
 
 })

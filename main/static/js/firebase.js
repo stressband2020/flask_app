@@ -22,7 +22,8 @@ $(function(){
     database.on('value', function(snapshot) {
         console.log(snapshot.val().BPM);
         $("#bpm").text(snapshot.val().BPM);
-        $("#gsr").text(snapshot.val().GSR);
+	var gsr = snapshot.val().GSR.toFixed(2);
+        $("#gsr").text(gsr);
         $("#temp").text(snapshot.val().Temperature);
         // $("#overall").text(snapshot.val().overall);
         var oall = {"Low":"gauge_low.png", "Mild":"gauge_mild.png", "Severe":"gauge_severe.png"}
